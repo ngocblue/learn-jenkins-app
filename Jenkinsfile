@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    environment {
+        // Set the new path for the current Jenkins job execution
+        PATH = "$HOME/.npm-global/bin:$PATH" 
+    }
 
     stages {
         /*
@@ -48,6 +52,7 @@ pipeline {
             }
             steps {
                 sh '''
+                    npm config set prefix "~/.npm-global"
                     npm install -g serve
                     #serve -s build
                     node-modules/.bin/serve -s build  &
