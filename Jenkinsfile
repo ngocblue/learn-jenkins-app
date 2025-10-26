@@ -54,8 +54,8 @@ pipeline {
                 sh '''
                     npm config set prefix "~/.npm-global"
                     npm install -g serve
-                    #serve -s build
-                    node-modules/.bin/serve -s build  &
+                    serve -s build &
+                    #node-modules/.bin/serve -s build  &
                     sleep 10
                     npx playwright test
                 '''
