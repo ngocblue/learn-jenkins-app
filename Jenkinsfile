@@ -4,6 +4,7 @@ pipeline {
         // Set the new path for the current Jenkins job execution
         PATH = "$HOME/.npm-global/bin:$PATH" 
         NETLIFY_SITE_ID = '2c7363ca-155f-4c2a-93f3-7c0d04af22c7'
+        NETLIFY_AUTH_TOKEN = credentials('netlify-token')
     }
 
     stages {
@@ -86,6 +87,9 @@ pipeline {
                     export PATH=$HOME/.npm-global/bin:$PATH
                     netlify --version
                     echo "Deploying to Netlify site ID: $NETLIFY_SITE_ID"
+                    netlify status
+                    netlify deploy --dir=build --prod
+                    
                 '''
             }
         }
