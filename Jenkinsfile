@@ -103,7 +103,7 @@ pipeline {
             }
 
             environment {
-                CI_ENVIRONMENT_URL = 'http://localhost:8080/job/learn-jenkins-app/scmPollLog'
+                CI_ENVIRONMENT_URL = 'https://splendid-cannoli-d120e2.netlify.app'
             }
 
             steps {
