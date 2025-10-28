@@ -3,6 +3,7 @@ pipeline {
     environment {
         // Set the new path for the current Jenkins job execution
         PATH = "$HOME/.npm-global/bin:$PATH" 
+        NETLIFY_SITE_ID = '2c7363ca-155f-4c2a-93f3-7c0d04af22c7'
     }
 
     stages {
@@ -82,7 +83,8 @@ pipeline {
             steps {
                 sh '''
                     npm install netlify-cli@20.1.1 -g --prefix=$HOME/.npm-global
-                    netlify --version
+                    node_modules/.bin/netlify --version
+                    echo "Deploying to Netlify site ID: $NETLIFY_SITE_ID"
                 '''
             }
         }
