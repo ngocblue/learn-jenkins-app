@@ -83,7 +83,8 @@ pipeline {
             steps {
                 sh '''
                     npm install netlify-cli@20.1.1 -g --prefix=$HOME/.npm-global
-                    node_modules/.bin/netlify --version
+                    export PATH=$HOME/.npm-global/bin:$PATH
+                    netlify --version
                     echo "Deploying to Netlify site ID: $NETLIFY_SITE_ID"
                 '''
             }
